@@ -1,0 +1,15 @@
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.Form1.resources
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.Properties.Resources.resources
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.csproj.GenerateResource.Cache
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\bin\Debug\Crawing_Amap_Busway.exe
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\bin\Debug\Crawing_Amap_Busway.pdb
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.exe
+C:\Users\i\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.pdb
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.exe
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.pdb
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.Form1.resources
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.Properties.Resources.resources
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.csproj.GenerateResource.Cache
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\bin\Debug\Crawing_Amap_Busway.exe
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\bin\Debug\Crawing_Amap_Busway.pdb
+C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.csprojResolveAssemblyReference.cache
