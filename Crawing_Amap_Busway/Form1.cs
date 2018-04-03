@@ -22,8 +22,10 @@ namespace Crawing_Amap_Busway
         ArrayList cityCodeList = new ArrayList();
         string[] str_Array;
         string[] tmp_Array;
+        
         private void Form1_Load(object sender, EventArgs e)
         {
+
             FileStream cityCodefs = new FileStream("AMap_adcode_citycode.csv", FileMode.Open);
             StreamReader sr = new StreamReader(cityCodefs,Encoding.UTF8);
             string aryline;
@@ -53,7 +55,96 @@ namespace Crawing_Amap_Busway
         {
             this.Dispose();
         }
+        private void Crawing_busway(string city_Name, string str_keywords,string output_Filename)
+        {
+            FileStream Output_fs = null;
+            StreamWriter sw = null;
+            string cityName = city_Name;
+            string cityCode = "010";
+            bool flag = false;
+            foreach (string cyName in cityNameList)
+            {
+                if (cyName == cityName)
+                {
+                    cityCode = (string)cityCodeList[cityNameList.IndexOf(cyName)];
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag == false)
+            {
+                MessageBox.Show("输入城市名有误，请重新确认!", "错误!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string keyWords = str_keywords;
+            string url = string.Format("https://www.amap.com/service/poiInfo?query_type=TQUERY&pagesize=20&pagenum=1&qii=true&cluster_state=5&need_utd=true&utd_sceneid=1000&div=PC1000&addr_poi_merge=true&is_classify=true&zoom=17&city={0}&keywords={1}", cityCode, keyWords);
+            HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
+            req.Method = "GET";
+            WebResponse wr = req.GetResponse();
+            
+            //在这里对接收到的页面内容进行处理
+            System.IO.Stream respStream = wr.GetResponseStream();
+            System.IO.StreamReader reader = new System.IO.StreamReader(respStream, Encoding.UTF8);
+            str_Array = reader.ReadToEnd().Split('{');
+            string xSum = "", ySum = "";
+            string bWayName = "";
+            int time = 0;
+            for (int i = 16; i < str_Array.Length; i++)
+            {
+                tmp_Array = str_Array[i].Split('"');
+                for (int j = 0; j < tmp_Array.Length; j++)
+                {
+                    if (tmp_Array[j] == "front_name")       //抓取路径信息
+                    {
+                        time++;
+                        if (time > 2)
+                            return;
+                        j++;
+                        while (j < tmp_Array.Length)
+                        {
+                            if (tmp_Array[j] == "xs")
+                            {
+                                j += 2;
+                                xSum = tmp_Array[j];
+                            }
+                            else if (tmp_Array[j] == "ys")
+                            {
+                                j+=2;
+                                ySum = tmp_Array[j];
+                            }
+                            else if (tmp_Array[j] == "name")
+                            {
+                                j += 2;
+                                bWayName = tmp_Array[j];
+                                var utf8WithoutBom = new System.Text.UTF8Encoding(false);
+                                Output_fs = new FileStream(output_Filename, FileMode.Open);
+                                sw = new StreamWriter(Output_fs, utf8WithoutBom);
+                                sw.BaseStream.Seek(0, SeekOrigin.End);
+                                sw.Write(bWayName + ",\"");
+                                string[] tmpx = xSum.Split(',');
+                                string[] tmpy = ySum.Split(',');
+                                int ii ;
+                                for (ii = 0; ii < tmpx.Length - 1; ii++)
+                                {
+                                    sw.Write(tmpx[ii] + "," + tmpy[ii] + ";"); 
+                                }
+                                sw.WriteLine(tmpx[ii] + "," + tmpy[ii] + "\"");
+                                sw.Close();
+                                Output_fs.Close();
+                                break;
+                            }
+                            j++;
+                        }
+                        break;
+                    }
+                    else                                    // 抓取站点信息
+                    {
 
+                    }
+                }
+
+            }   
+        }
         private void Btn_Confirm_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -123,13 +214,19 @@ namespace Crawing_Amap_Busway
                             {
                                 j += 2;
                                 bWayName = tmp_Array[j];
-
+                                var utf8WithoutBom = new System.Text.UTF8Encoding(false);
                                 Output_fs = new FileStream(dlg.FileName, FileMode.Open);
-                                sw = new StreamWriter(Output_fs, Encoding.UTF8);
+                                sw = new StreamWriter(Output_fs, utf8WithoutBom);
                                 sw.BaseStream.Seek(0, SeekOrigin.End);
-                                sw.WriteLine(bWayName);
-                                sw.WriteLine(xSum);
-                                sw.WriteLine(ySum);
+                                sw.Write(bWayName + ",\"");
+                                string[] tmpx = xSum.Split(',');
+                                string[] tmpy = ySum.Split(',');
+                                int ii ;
+                                for (ii = 0; ii < tmpx.Length - 1; ii++)
+                                {
+                                    sw.Write(tmpx[ii] + "," + tmpy[ii] + ";"); 
+                                }
+                                sw.WriteLine(tmpx[ii] + "," + tmpy[ii] + "\"");
                                 sw.Close();
                                 Output_fs.Close();
                                 break;
@@ -145,10 +242,39 @@ namespace Crawing_Amap_Busway
                 }
 
             }
+          MessageBox.Show("Finished!");  
+        }
 
+        private void Btn_ArrayCrawing_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "csv文件|*.*|csv文件|*.csv|所有文件|*.*";
+            dlg.Title = "选择输入文件";
+            dlg.RestoreDirectory = true;
+            if (dlg.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            FileStream fs = new FileStream(dlg.FileName, FileMode.Open);
+            StreamReader sr = new StreamReader(fs, Encoding.UTF8);
+            string aryline;
+            OpenFileDialog dlg2 = new OpenFileDialog();
+            dlg2.Filter = "csv文件|*.*|csv文件|*.csv|所有文件|*.*";
+            dlg2.Title = "选择输出文件";
+            dlg2.RestoreDirectory = true;
+            if (dlg2.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
 
-                //MessageBox.Show(str_Array[10]);
-            
+            while ((aryline = sr.ReadLine()) != null)
+            {
+                string[] tmp = aryline.Split(',');
+                Crawing_busway(tmp[0], tmp[1], dlg2.FileName);
+            }
+            sr.Close();
+            fs.Close();
+            MessageBox.Show("Finished!");
         }
     }
 }

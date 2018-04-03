@@ -34,6 +34,7 @@
             this.KeyWords_Text = new System.Windows.Forms.TextBox();
             this.Btn_Confirm = new System.Windows.Forms.Button();
             this.Btn_Cancel = new System.Windows.Forms.Button();
+            this.Btn_ArrayCrawing = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -72,7 +73,7 @@
             // 
             // Btn_Confirm
             // 
-            this.Btn_Confirm.Location = new System.Drawing.Point(32, 103);
+            this.Btn_Confirm.Location = new System.Drawing.Point(12, 103);
             this.Btn_Confirm.Name = "Btn_Confirm";
             this.Btn_Confirm.Size = new System.Drawing.Size(75, 23);
             this.Btn_Confirm.TabIndex = 3;
@@ -82,7 +83,7 @@
             // 
             // Btn_Cancel
             // 
-            this.Btn_Cancel.Location = new System.Drawing.Point(136, 103);
+            this.Btn_Cancel.Location = new System.Drawing.Point(93, 103);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancel.TabIndex = 3;
@@ -90,11 +91,22 @@
             this.Btn_Cancel.UseVisualStyleBackColor = true;
             this.Btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);
             // 
+            // Btn_ArrayCrawing
+            // 
+            this.Btn_ArrayCrawing.Location = new System.Drawing.Point(174, 103);
+            this.Btn_ArrayCrawing.Name = "Btn_ArrayCrawing";
+            this.Btn_ArrayCrawing.Size = new System.Drawing.Size(75, 23);
+            this.Btn_ArrayCrawing.TabIndex = 3;
+            this.Btn_ArrayCrawing.Text = "批量爬取";
+            this.Btn_ArrayCrawing.UseVisualStyleBackColor = true;
+            this.Btn_ArrayCrawing.Click += new System.EventHandler(this.Btn_ArrayCrawing_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(255, 143);
+            this.Controls.Add(this.Btn_ArrayCrawing);
             this.Controls.Add(this.Btn_Cancel);
             this.Controls.Add(this.Btn_Confirm);
             this.Controls.Add(this.KeyWords_Text);
@@ -119,6 +131,7 @@
         private System.Windows.Forms.TextBox KeyWords_Text;
         private System.Windows.Forms.Button Btn_Confirm;
         private System.Windows.Forms.Button Btn_Cancel;
+        private System.Windows.Forms.Button Btn_ArrayCrawing;
     }
 }
 

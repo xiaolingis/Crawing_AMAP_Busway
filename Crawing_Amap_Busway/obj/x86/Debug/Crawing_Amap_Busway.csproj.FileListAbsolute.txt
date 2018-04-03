@@ -13,3 +13,4 @@ C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Cr
 C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\bin\Debug\Crawing_Amap_Busway.exe
 C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\bin\Debug\Crawing_Amap_Busway.pdb
 C:\Users\EVLEON\Desktop\Crawing_Amap_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.csprojResolveAssemblyReference.cache
+C:\Users\i\Desktop\Crawing_AMAP_Busway\Crawing_Amap_Busway\obj\x86\Debug\Crawing_Amap_Busway.csprojResolveAssemblyReference.cache
